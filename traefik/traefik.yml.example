@@ -1,0 +1,30 @@
+api:
+  insecure: false
+  dashboard: true
+
+entryPoints:
+  http:
+    address: ":80"
+  https:
+    address: ":443"
+    http:
+      tls:
+        certResolver: le
+        domains:
+          - main: example.com
+
+certificatesResolvers:
+  le:
+    acme:
+      email: user@example.com
+      storage: /etc/traefik/acme.json
+      httpChallenge:
+        entryPoint: http
+
+providers:
+  file:
+    filename: /etc/traefik/provider.yml
+    watch: true
+  docker:
+    exposedByDefault: false
+    network: traefik_bridge

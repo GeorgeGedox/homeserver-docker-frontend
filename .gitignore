@@ -1,0 +1,8 @@
+.vscode
+.idea
+.env
+/organizr
+/portainer
+/traefik/acme.json
+/traefik/provider.yml
+/traefik/traefik.yml

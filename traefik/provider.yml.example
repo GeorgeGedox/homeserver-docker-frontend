@@ -1,0 +1,15 @@
+http:
+  middlewares:
+    force-https:
+      redirectScheme:
+        scheme: https
+
+  routers:
+    https-redirect:
+      priority: 90
+      entryPoints:
+        - http
+      rule: "Host(`example.com`)"
+      service: noop@internal
+      middlewares:
+        - force-https
